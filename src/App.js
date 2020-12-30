@@ -21,7 +21,7 @@ export default function App() {
       </span>
     
       <footer>
-      This project was coded by Fadumo Ahmed and is 
+      This project was coded by Fadumo Ahmed and is {" "}
       <a href="https://github.com/fame372/react-weather-app" target = "_blank">  
           open -sourced on github
       </a>
