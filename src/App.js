@@ -10,13 +10,7 @@ export default function App() {
       <p>
         <input type="search engine" placeholder="search weather" />
       </p>
-      <h3>
-        <img
-          src="https://bloximages.newyork1.vip.townnews.com/northwestgeorgianews.com/content/tncms/assets/v3/editorial/9/cf/9cf0d394-2352-11e3-9d30-001a4bcf6878/565f5a4629c30.image.jpg"
-          width="40px"
-        />
-        <span>20</span>°C|<a href="#"> °F</a>
-      </h3>
+     
       <br />
       <span className="wind">
         <ul>
