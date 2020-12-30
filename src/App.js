@@ -5,7 +5,7 @@ export default function App() {
     <div className="Weather App">
       
       <h1>
-        hellow 
+        hellow what is good 
       </h1>
     </div>
   );
