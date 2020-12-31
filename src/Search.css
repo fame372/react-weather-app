@@ -1,0 +1,64 @@
+.Search {   margin-bottom: 100px;
+    font-family: arial, sans-serif;
+   margin: 30px auto;
+    padding:20px;
+    border:1px solid #0a0e13;
+    border-radius: 5px;
+    
+}
+
+.Search h1{
+    
+    color:black;
+    font-size: 24px;
+    font-weight: 100;
+    line-height: 28px;
+    margin-bottom: 0;
+    }
+
+    .Search ul{
+    margin: 0auto;
+    padding:0;
+    }
+    .Search li{
+        margin:0;
+        padding:0;
+        text-transform: capitalize;
+        list-style:none;
+        color:black;
+        font-size:16px;
+        font:weight 100px;
+        line-height:19px
+    }
+
+    .Search form {
+        margin-bottom: 20px;
+        padding-top: 10px;
+    }
+
+    .Search temperature  {
+        color:black;
+        font-size: 64px;
+        line-height: 1px;
+        font-weight: 400px;
+       
+   
+       }
+      
+       
+       .Search .img
+        {
+           margin-right:2px;
+           width: 100px;
+           position: relative;
+           top:-10px;
+       }
+       .Search .unit{
+           position:relative;
+           font-size: 16px;
+           top:-33px;
+           color:red;
+       }
+      
+    
+       
