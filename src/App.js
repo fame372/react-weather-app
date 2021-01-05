@@ -7,7 +7,7 @@ export default function App() {
     <div className="Weather App">
       <div className="continer">
       
-      <Search />
+      <Search  city ="edmonton"/>
       
       </div>
       <footer>

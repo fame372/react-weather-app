@@ -1,7 +1,25 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Search.css";
+import axios from "axios";
 
-export default function Search(){
+export default function Search(props){
+    const [weatherData,setWeatherData] = useState({ ready: false});
+
+    function handleResponse(response){
+console.log (response.data);
+setWeatherData ({
+    ready : true,
+    temperature: response.data.main.temp,
+    humidity: response.data.main.humidity,
+    wind:response.data.wind.speed,
+    date :"Friday 02:00",
+    descripton: response.data.weather[0].descripton,
+    city:response.data.name,
+    iconUrl:"https://ssl.gstatic.com/onebox/weather/64/rain_light.png",
+});
+
+    }
+   if (weatherData.ready){
     return ( <div className="Search" >
         <form>
             <div className="row">
@@ -15,30 +33,28 @@ export default function Search(){
         </form>
         <h1>  Edmonton, Alberta </h1>
         <ul>
-    <li> Monday 18:00</li>
-    <li> fully sunny </li>
+   <li> {weatherData.date}</li>
+    <li> {weatherData.descripton} </li>
     </ul>
         <div className="row mt-3">
             <div className="col-6">
                 
                 <div className="clearfix">
-        <img src ="https://ssl.gstatic.com/onebox/weather/64/rain_light.png"
-        alt="light Rain"
+        <img src = {weatherData.iconUrl}
+        alt="light clould"
         id="icon"
         className ="float-left"/> 
-        
-<div className="float-left">
-    <strong id="temperature">12</strong> 
+    <strong className="temperature">{Math.round(weatherData.temperature)}</strong> 
     <span className ="units">
         <a href ="/" id="celsius-link"> °C </a> | <a href="/" id="fahrenheit-link" >°F</a> </span>
 </div>
-</div>
+
             </div>
            <div className ="col-6">
       <ul>
         <li>Participation: 0%</li>
-        <li>Humidity: 77%</li>
-        <li>wind: 8 Kg/h</li>
+   <li>Humidity: {weatherData.humidity}%</li>
+        <li>wind: {weatherData.wind} Kg/h</li>
       </ul>
     </div>
     </div>
@@ -46,5 +62,15 @@ export default function Search(){
     
     
     );
+   }
+   else {
+       
+        let apiKey="9b8aa97c4b78075b51039339e3bab971";
+        let apiUrl=`https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${apiKey}&units=metric`;
+        axios.get(apiUrl).then(handleResponse);
+        
+        return "loading...";
+    
+   }
   
 }
