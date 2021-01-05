@@ -1,6 +1,7 @@
 import './App.css';
-import "./Search.css"
-import Search from "./Search"
+import "./Search.css";
+import FormattedDate from "./FormattedDate";
+import Search from "./Search";
 
 export default function App() {
   return (
