@@ -1,13 +1,15 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+import WeatherInfo from "./WeatherInfo";
 import "./Search.css";
 import axios from "axios";
-import FormattedDate from "./FormattedDate";
+
 
 export default function Search(props){
-    const [weatherData,setWeatherData] = useState({ ready: false});
+    const [weatherData,setWeatherData] = useState({ ready: false });
+    const [city,setCity] = useState(props.city)
 
     function handleResponse(response){
-console.log (response.data);
+
 setWeatherData ({
     ready : true,
     temperature: response.data.main.temp,
@@ -20,60 +22,54 @@ setWeatherData ({
 });
 
     }
+
+    function search() {
+
+        let apiKey="9b8aa97c4b78075b51039339e3bab971";
+        let apiUrl=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+        axios.get(apiUrl).then(handleResponse);
+    }
+
+
+function handleSubmit(event){
+    event.preventDefault();
+    search();
+}
+
+function handleCityChange(event){
+    setCity(event.target.value);
+}
+
+
    if (weatherData.ready){
     return ( <div className="Search" >
-        <form>
+        <form onSubmit={handleSubmit}>
             <div className="row">
                 <div className="col-9">
-                    <input type ="search" placeholder = "city name" className="form-control"/>
+                    
+                    <input type ="search" 
+                    placeholder = "city name"
+                     className="form-control"
+                     autoFocus ="on"
+                     onChange={handleCityChange}
+                     
+                     />
             </div>
+
             <div className="col-3">
-                <input type="submit" value="search" className="btn btn-primary w-100"/>
-</div>
+                <input type="submit" 
+                value="search" 
+                className="btn btn-primary w-100"/>
+            </div>
             </div>
         </form>
-        <h1>  Edmonton, Alberta </h1>
-        <ul>
-    <li> 
-        <FormattedDate date={weatherData.date} />
-            
-            </li>
-            <li> clear sky</li>
-    </ul>
-        <div className="row mt-3">
-            <div className="col-6">
-                
-                <div className="clearfix">
-        <img src = {weatherData.iconUrl}
-        alt="light clould"
-        id="icon"
-        className ="float-left"/> 
-    <strong className="temperature">{Math.round(weatherData.temperature)}</strong> 
-    <span className ="units">
-        <a href ="/" id="celsius-link"> °C </a> | <a href="/" id="fahrenheit-link" >°F</a> </span>
-</div>
-
-            </div>
-           <div className ="col-6">
-      <ul>
-        <li>Participation: 0%</li>
-   <li>Humidity: {weatherData.humidity}%</li>
-        <li>wind: {weatherData.wind} Kg/h</li>
-      </ul>
+        <WeatherInfo data={weatherData} />
     </div>
-    </div>
-    </div>
-    
-    
     );
    }
    else {
-       
-        let apiKey="9b8aa97c4b78075b51039339e3bab971";
-        let apiUrl=`https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${apiKey}&units=metric`;
-        axios.get(apiUrl).then(handleResponse);
-        
-        return "loading...";
+       search();
+      return "loading...";
     
    }
   

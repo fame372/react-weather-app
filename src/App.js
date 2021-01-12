@@ -1,7 +1,7 @@
 import './App.css';
 import "./Search.css";
-import FormattedDate from "./FormattedDate";
 import Search from "./Search";
+import "./FormattedDate";
 
 export default function App() {
   return (
