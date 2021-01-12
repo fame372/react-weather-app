@@ -3,8 +3,13 @@
     max-height: 700px;
   display: block;
   margin: 0 auto;
+  background-image: url("https://www.pixelstalk.net/wp-content/uploads/2016/05/Sky-Desktop-Backgrounds-Hd-Images.jpg");
+  background-size: cover;
+
+
 }
 .App footer{
-    font-size: 13px;
+    font-size: 15px;
     margin: 10px 0;
 }
+

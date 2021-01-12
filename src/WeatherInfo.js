@@ -12,9 +12,6 @@ export default function WeatherInfo(props){
     <li> 
         <FormattedDate date = {props.data.date}/>
             </li>
-            <li> 
-                clear sky
-                </li>
     </ul>
         <div className="row mt-3">
             <div className="col-6">
@@ -26,7 +23,7 @@ export default function WeatherInfo(props){
         className ="float-left"/> 
     <strong className="temperature">{Math.round(props.data.temperature)}</strong> 
     <span className ="units">
-        <a href ="/" id="celsius-link"> °C </a> | <a href="/" id="fahrenheit-link" >°F</a> </span>
+         °C </span>
 </div>
 
             </div>
@@ -34,7 +31,7 @@ export default function WeatherInfo(props){
       <ul>
         <li>Participation: 0%</li>
    <li>Humidity: {props.data.humidity}%</li>
-        <li>wind: {props.data.wind} Kg/h</li>
+        <li>wind: {Math.round(props.data.wind)} Kg/h</li>
       </ul>
     </div>
     </div>
